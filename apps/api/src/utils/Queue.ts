@@ -1,4 +1,4 @@
-import PQueue from "p-queue";
+import { default as PQueue } from "p-queue";
 import { BaseConfig } from "../config/base.config";
 
 export class Queue {
