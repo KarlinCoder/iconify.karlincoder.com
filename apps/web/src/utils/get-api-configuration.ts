@@ -5,10 +5,5 @@ import type { IConfigurationResponse } from "../types/api";
 export const getApiConfiguration =
   async (): Promise<IConfigurationResponse> => {
     const { data } = await axios.get(`${API_URL}/v1/configuration`);
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve(0);
-      }, 3000)
-    );
     return data;
   };
