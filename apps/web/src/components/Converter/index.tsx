@@ -61,9 +61,11 @@ export const Converter: React.FC<Props> = ({ onIconConverted }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-[600px] min-h-[600px] h-full w-full bg-white/50 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
-      <div className="flex justify-between items-center bg-[#f9fafc] shadow-xl shadow-black/3 px-3 py-2">
-        <h2 className="font-semibold text-mg font-poppins">🧩ICONIFY</h2>
+    <div className="flex flex-col max-w-[600px] min-h-[600px] h-full w-full bg-neutral-800 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
+      <div className="flex justify-between items-center bg-neutral-700 shadow-xl shadow-black/3 px-3 py-2">
+        <h2 className="font-semibold text-mg font-poppins text-neutral-100">
+          🧩ICONIFY
+        </h2>
         <button className="hover:scale-120 active:scale-100 transition-transform cursor-pointer">
           <FcInfo size={20} />
         </button>
@@ -90,7 +92,7 @@ export const Converter: React.FC<Props> = ({ onIconConverted }) => {
             isLoading={isConverting}
             onClick={handleConvertClick}
           />
-          <p className="text-xs italic text-black/70 font-inter-tight">
+          <p className="text-xs italic text-white/50 font-inter-tight">
             La duración del proceso puede variar dependiendo de la cantidad de
             imagenes en cola en este momento.
           </p>

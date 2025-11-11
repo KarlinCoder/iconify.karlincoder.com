@@ -40,15 +40,15 @@ export const ConversionSettings: React.FC<Props> = ({
 
   return (
     <div className="flex flex-col gap-1 w-full font-poppins text-[0.8rem]">
-      <div className="flex justify-center items-center gap-1 shadow-2xl shadow-black/4 bg-white/40 p-4 space-y-1 rounded-xl">
+      <div className="flex justify-center items-center gap-1 shadow-2xl shadow-black/4 bg-neutral-700 p-4 mb-1.5 space-y-1 rounded-xl">
         <FcSettings size={20} />
-        <p className="font-poppins text-center text-[0.9rem] font-semibold text-[#6d767f]">
+        <p className="font-poppins text-center text-[0.9rem] font-semibold text-[#d4d7da]">
           CONVERSION OPTIONS
         </p>
       </div>
 
-      <div className="shadow-2xl shadow-black/4 bg-white/40 p-4 space-y-1 rounded-xl">
-        <div className="flex justify-between items-center max-w-[500px] w-full  text-[#6d767f]">
+      <div className="shadow-2xl shadow-black/4 bg-neutral-700 p-4 space-y-1 rounded-xl">
+        <div className="flex justify-between items-center max-w-[500px] w-full  text-[#d4d7da]">
           <p className="font-poppins">CONVERSION RESOLUTION: </p>
           {availableResolutions ? (
             <Dropdown
@@ -60,7 +60,7 @@ export const ConversionSettings: React.FC<Props> = ({
               options={availableResolutions}
             />
           ) : (
-            <div className="text-neutral-400 py-3 flex justify-center items-center gap-2">
+            <div className="text-neutral-400 py-2 flex justify-center items-center gap-2">
               <div>
                 <LuLoaderCircle className="text-neutral-400 scale-120 animate-spin" />
               </div>
@@ -69,7 +69,7 @@ export const ConversionSettings: React.FC<Props> = ({
           )}
         </div>
 
-        <div className="flex justify-between items-center max-w-[500px] w-full  text-[#6d767f]">
+        <div className="flex justify-between items-center max-w-[500px] w-full  text-[#d4d7da]">
           <p className="font-poppins">CONVERSION FORMAT: </p>
           {availableFormats ? (
             <Dropdown
@@ -81,7 +81,7 @@ export const ConversionSettings: React.FC<Props> = ({
               options={availableFormats}
             />
           ) : (
-            <div className="text-neutral-400 py-3 flex justify-center items-center gap-2">
+            <div className="text-neutral-400 py-2 flex justify-center items-center gap-2">
               <div>
                 <LuLoaderCircle className="text-neutral-400 scale-120 animate-spin" />
               </div>

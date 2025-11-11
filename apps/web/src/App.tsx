@@ -14,11 +14,11 @@ function App() {
   };
 
   return (
-    <main className="relative flex justify-center items-center gap-3 p-3 bg-linear-180 from-[#e2f0fd] to-[#c3dcfa] min-h-dvh w-dvw">
+    <main className="relative flex justify-center items-center gap-3 p-3 bg-neutral-900 min-h-dvh w-dvw">
       <Converter onIconConverted={handleAddConvertedIcon} />
 
       <Sidebar convertedIcons={convertedIcons} />
-      <span className="absolute bottom-3 right-6 text-xs opacity-50">
+      <span className="absolute bottom-3 right-6 text-xs opacity-50 text-white">
         made with 💙 by KarlinCoder
       </span>
     </main>

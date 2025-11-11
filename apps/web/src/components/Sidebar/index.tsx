@@ -17,10 +17,12 @@ export const Sidebar: React.FC<Props> = ({ convertedIcons }) => {
   }, [convertedIcons]);
 
   return (
-    <aside className="flex flex-col max-w-[400px] h-[600px] w-full bg-white/50 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
-      <div className="flex gap-3 items-center bg-[#f9fafc] shadow-xl shadow-black/3 px-3 py-2">
+    <aside className="flex flex-col max-w-[400px] h-[600px] w-full bg-neutral-800 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
+      <div className="flex gap-3 items-center bg-neutral-700 shadow-xl shadow-black/3 px-3 py-2">
         <FcTodoList size={20} />
-        <h2 className="font-semibold text-md font-poppins">Converted icons</h2>
+        <h2 className="font-semibold text-md font-poppins text-neutral-100">
+          Converted icons
+        </h2>
       </div>
 
       <main

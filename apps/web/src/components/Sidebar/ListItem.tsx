@@ -24,7 +24,7 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 100 }}
       key={convertedIcon.filename}
-      className="flex items-center gap-2 bg-white grow p-2 rounded-md shadow-lg shadow-black/4"
+      className="flex items-center gap-2 bg-neutral-700 grow p-2 rounded-md shadow-lg shadow-black/4"
     >
       <img
         src={convertedIcon.file_url}
@@ -33,10 +33,10 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       />
 
       <div className="grow h-full flex flex-col justify-center">
-        <h2 className="font-inter-tight text-sm font-semibold">
+        <h2 className="font-inter-tight text-sm font-semibold text-neutral-50">
           {convertedIcon.filename}
         </h2>
-        <div className="flex items-center gap-3 font-inter-tight text-[0.8rem] text-neutral-500">
+        <div className="flex items-center gap-3 font-inter-tight text-[0.8rem] text-neutral-300">
           <p>{convertedIcon.resolution}</p>
           <p>.{convertedIcon.format}</p>
         </div>

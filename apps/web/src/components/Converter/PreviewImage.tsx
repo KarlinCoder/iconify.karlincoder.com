@@ -24,7 +24,7 @@ export const PreviewImage: React.FC<Props> = ({ file }) => {
   }, [file]);
 
   return (
-    <div className="flex justify-center items-center overflow-hidden bg-white self-center rounded-md ">
+    <div className="flex justify-center items-center overflow-hidden bg-neutral-700 self-center rounded-md ">
       {file ? (
         <img
           ref={imgRef}
