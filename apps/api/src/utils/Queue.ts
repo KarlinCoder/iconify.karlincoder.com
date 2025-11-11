@@ -1,4 +1,5 @@
-import { default as PQueue } from "p-queue";
+const PQueue = require("p-queue").default;
+
 import { BaseConfig } from "../config/base.config";
 
 export class Queue {
