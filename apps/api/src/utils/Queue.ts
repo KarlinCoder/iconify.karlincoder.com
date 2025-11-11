@@ -2,10 +2,14 @@ import PQueue from "p-queue";
 import { BaseConfig } from "../config/base.config";
 
 export class Queue {
-  private readonly queue = new PQueue({
-    concurrency: BaseConfig.maxConcurrentProcess,
-    autoStart: true,
-  });
+  private readonly queue;
+
+  constructor() {
+    this.queue = new PQueue({
+      concurrency: BaseConfig.maxConcurrentProcess,
+      autoStart: true,
+    });
+  }
 
   public add(task: () => Promise<string>) {
     return this.queue.add(task);
