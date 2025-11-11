@@ -1,0 +1,25 @@
+{
+  "name": "Iconify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:api": "turbo run dev --filter=api",
+    "dev:web": "turbo run dev --filter=web",
+    "build": "turbo run build",
+    "build:api": "turbo run build --filter=api",
+    "build:web": "turbo run build --filter=web",
+    "start": "turbo run start",
+    "start:api": "turbo run start --filter=api",
+    "start:web": "turbo run start --filter=web"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.1",
+  "devDependencies": {
+    "turbo": "^2.6.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,7 @@
+@import "@fontsource/inter-tight";
+@import "@fontsource/poppins";
+
+@theme {
+  --font-inter-tight: "Inter Tight";
+  --font-poppins: "Poppins";
+}

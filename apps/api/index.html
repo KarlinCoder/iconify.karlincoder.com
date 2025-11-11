@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convertidor de Imágenes</title>
+  </head>
+  <body>
+    <form id="convertForm" enctype="multipart/form-data">
+      <input type="file" id="fileInput" />
+      <button type="submit">Convertir</button>
+    </form>
+    <h1></h1>
+    <img src="" alt="" />
+    <script>
+      const eventsUrl = "http://localhost:3000/v1/queue-events";
+      const texto = document.querySelector("h1");
+      const sse = new EventSource(eventsUrl);
+      const img = document.getElementsByTagName("img")[0];
+
+      sse.onmessage = (event) => {
+        console.log("Mensaje recibido:", event.data);
+        texto.innerText = event.data;
+      };
+
+      sse.onerror = (error) => {
+        console.error("Error en SSE:", error);
+      };
+
+      // Escuchar el evento submit desde JS
+      document
+        .getElementById("convertForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault(); // ← Esto evita el refresco
+
+          const fileInput = document.getElementById("fileInput");
+          const file = fileInput.files[0];
+
+          if (!file) {
+            alert("Por favor selecciona un archivo.");
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("image", file);
+
+          try {
+            const response = await fetch("http://localhost:3000/v1/convert", {
+              method: "POST",
+              body: formData,
+            });
+
+            const result = await response.json();
+            img.src = result.outputFile;
+            console.log("Respuesta del servidor:", result);
+          } catch (err) {
+            console.error("Error al enviar el archivo:", err);
+          }
+        });
+    </script>
+  </body>
+</html>
