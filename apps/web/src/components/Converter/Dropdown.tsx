@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaAngleUp } from "react-icons/fa6";
-import { AnimatePresence, motion } from "motion/react";
 import type { TModalOpened } from "./ConversionSettings";
+import { AnimatePresence, motion } from "motion/react";
 
 interface DropdownProps {
   selected: string;
@@ -44,11 +44,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <div className="relative max-w-[200px] w-full font-poppins font-semibold">
-      <motion.div
-        initial={{ x: 15, opacity: 0 }}
-        animate={{ x: 0, opacity: 100 }}
+      <div
         onClick={handleOpenedDropdown}
-        className="relative bg-neutral-800 hover:bg-neutral-800/90 active:bg-neutral-800 text-back rounded-md py-2 px-4 w-full cursor-pointer text-white/50"
+        className="relative bg-[#111111] hover:bg-[#131313] active:bg-[#111111] text-back rounded-md py-2 px-4 w-full cursor-pointer text-white/50"
       >
         <p>{selected}</p>
         <FaAngleUp
@@ -56,22 +54,22 @@ export const Dropdown: React.FC<DropdownProps> = ({
             showList ? "rotate-180" : "rotate-0"
           }`}
         />
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {showList && modalName === selectedModalName && (
           <motion.ul
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 100 }}
-            exit={{ y: 3, opacity: 0 }}
-            className="absolute bottom-12 w-full bg-neutral-800 backdrop-blur-2xl p-2 rounded-lg shadow-lg shadow-black/7"
+            exit={{ y: 5, opacity: 0 }}
+            className="absolute bottom-10 w-full bg-[#111111] backdrop-blur-2xl p-2 rounded-lg shadow-lg shadow-black/7"
           >
             {options.map((item) => {
               return (
                 <li
                   onClick={() => handleOptionClick(item)}
-                  className={`relative py-3 hover:bg-neutral-700/30 px-4 rounded-lg active:bg-transparent cursor-pointer ${
-                    item === selected && "bg-neutral-700/30"
+                  className={`relative py-3 hover:bg-white/1 px-4 rounded-lg active:bg-transparent cursor-pointer ${
+                    item === selected && "bg-white/1"
                   }`}
                 >
                   {item}

@@ -1,9 +1,10 @@
 import { spawn } from "child_process";
 import path from "path";
-import fs from "fs/promises";
+import { getFfmpegPath } from "../utils/get-ffmpeg-path";
+import { checkTmpPaths } from "../utils/check-tmp-paths";
+import { BaseConfig } from "../config/base.config";
 
-const ffmpegPath = path.resolve(__dirname, "../bin/ffmpeg.exe");
-const outputImages = path.resolve(__dirname, "../../tmp/converted-images");
+const ffmpegPath = getFfmpegPath();
 
 export class FfmpegService {
   static async generateIcon(
@@ -11,12 +12,12 @@ export class FfmpegService {
     format: string,
     resolution: string
   ): Promise<string> {
-    await fs.mkdir(outputImages, { recursive: true });
+    checkTmpPaths();
 
-    const outputFile = path.join(outputImages, `${Date.now()}_icon.${format}`);
-    console.log(path.normalize(outputFile));
-    console.log(outputFile);
-    console.log(process.env.NODE_ENV);
+    const outputFile = path.resolve(
+      path.join(BaseConfig.tmpFiles.outputFiles, `${Date.now()}_icon.${format}`)
+    );
+
     return new Promise((resolve, reject) => {
       const imageProcess = spawn(ffmpegPath, [
         "-i",

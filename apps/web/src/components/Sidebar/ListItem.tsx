@@ -24,7 +24,7 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 100 }}
       key={convertedIcon.filename}
-      className="flex items-center gap-2 bg-neutral-700 grow p-2 rounded-md shadow-lg shadow-black/4"
+      className="flex items-center gap-2 bg-[#171717] grow p-2 rounded-md shadow-lg shadow-black/4 transition-transform duration-100 hover:scale-102"
     >
       <img
         src={convertedIcon.file_url}

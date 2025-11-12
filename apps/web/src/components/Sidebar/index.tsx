@@ -17,8 +17,8 @@ export const Sidebar: React.FC<Props> = ({ convertedIcons }) => {
   }, [convertedIcons]);
 
   return (
-    <aside className="flex flex-col max-w-[400px] h-[600px] w-full bg-neutral-800 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
-      <div className="flex gap-3 items-center bg-neutral-700 shadow-xl shadow-black/3 px-3 py-2">
+    <aside className="flex flex-col max-[990px]:max-w-[600px] w-full min-[990px]:max-w-[400px] h-[600px]  bg-radial to-[#131313] from-[#0a0a0a] shadow-2xl shadow-black/80 rounded-xl overflow-hidden">
+      <div className="flex gap-3 items-center bg-[#171717] shadow-xl shadow-black/3 px-3 py-2">
         <FcTodoList size={20} />
         <h2 className="font-semibold text-md font-poppins text-neutral-100">
           Converted icons
@@ -27,7 +27,7 @@ export const Sidebar: React.FC<Props> = ({ convertedIcons }) => {
 
       <main
         ref={listRef}
-        className="relative grow flex flex-col gap-7 items-center justify-start px-2 overflow-y-scroll"
+        className="relative grow flex flex-col gap-7 items-center justify-start px-2 overflow-y-auto"
       >
         {convertedIcons.length ? (
           <ul className="w-full p-2 py-4 flex flex-col gap-2">

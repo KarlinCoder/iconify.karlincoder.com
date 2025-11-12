@@ -1,19 +1,26 @@
 import { FcInfo } from "react-icons/fc";
 import { DragZone } from "./DragZone";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { ConversionSettings } from "./ConversionSettings";
 import { ConvertButton } from "./ConvertButton";
-import axios from "axios";
-import { API_URL } from "../../config/enviroment";
-import type { IConversionResponse } from "../../types/api";
+import type {
+  IConfigurationResponse,
+  IConversionResponse,
+} from "../../types/api";
 import { PreviewImage } from "./PreviewImage";
 import { postApiImage } from "../../utils/post-api-image";
 
 interface Props {
   onIconConverted: (info: IConversionResponse) => void;
+  apiConfiguration: IConfigurationResponse;
+  onShowAuthorModal: () => void;
 }
 
-export const Converter: React.FC<Props> = ({ onIconConverted }) => {
+export const Converter: React.FC<Props> = ({
+  onIconConverted,
+  apiConfiguration,
+  onShowAuthorModal,
+}) => {
   const [selectedImage, setSelectedImage] = useState<File>();
   const [isConverting, setIsConverting] = useState(false);
 
@@ -46,48 +53,39 @@ export const Converter: React.FC<Props> = ({ onIconConverted }) => {
     onIconConverted(data);
   };
 
-  const handleFormSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (selectedImage) {
-      const formData = new FormData();
-      formData.append("image", selectedImage);
-      formData.append("resolution", selectedResolution);
-      formData.append("format", selectedFormat);
-      setIsConverting(true);
-      const { data } = await axios.post(`${API_URL}/v1/convert`, formData);
-      setIsConverting(false);
-      onIconConverted(data);
-    }
-  };
-
   return (
-    <div className="flex flex-col max-w-[600px] min-h-[600px] h-full w-full bg-neutral-800 shadow-xl shadow-black/5 rounded-xl overflow-hidden">
-      <div className="flex justify-between items-center bg-neutral-700 shadow-xl shadow-black/3 px-3 py-2">
+    <div className="flex flex-col max-w-[600px] min-h-[600px] h-full w-full bg-radial to-[#131313] from-[#0a0a0a] shadow-2xl shadow-black/80 rounded-xl overflow-hidden">
+      <div className="flex justify-between items-center bg-[#171717] shadow-xl shadow-black/3 px-3 py-2">
         <h2 className="font-semibold text-mg font-poppins text-neutral-100">
           🧩ICONIFY
         </h2>
-        <button className="hover:scale-120 active:scale-100 transition-transform cursor-pointer">
+        <button
+          onClick={onShowAuthorModal}
+          className="hover:scale-120 active:scale-100 transition-transform cursor-pointer"
+        >
           <FcInfo size={20} />
         </button>
       </div>
-      <main className="grow flex flex-col gap-3 items-center justify-center px-8">
-        <div className="grid grid-cols-2 w-full gap-2">
+      <main className="grow flex flex-col gap-3 items-center justify-center px-8 py-5">
+        <div className="grid max-[520px]:grid-cols-1 grid-cols-2 w-full gap-2">
           <PreviewImage file={selectedImage!} />
 
           <DragZone
-            handleSubmit={handleFormSubmit}
+            acceptableFormats={apiConfiguration.available_formats}
             onImageSelected={handleSelectedImage}
           />
         </div>
 
         <ConversionSettings
+          availableFormats={apiConfiguration.available_formats}
+          availableResolutions={apiConfiguration.available_resolutions}
           handleSelectFormat={handleSelectFormat}
           handleSelectResolution={handleSelectResolution}
           selectedFormat={selectedFormat}
           selectedResolution={selectedResolution}
         />
 
-        <div className="flex justify-start items-center gap-2">
+        <div className="flex max-[520px]:flex-col flow-row justify-start items-center gap-2">
           <ConvertButton
             isLoading={isConverting}
             onClick={handleConvertClick}

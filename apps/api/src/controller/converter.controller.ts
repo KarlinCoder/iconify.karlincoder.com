@@ -89,7 +89,8 @@ export class ConverterController {
   static async download(req: Request, res: Response) {
     const { filename } = req.params;
 
-    const outputPath = path.resolve(__dirname, "../../tmp/converted-images");
+    const outputPath = path.resolve(BaseConfig.tmpFiles.outputFiles);
+    console.log(outputPath);
     const filePath = path.join(outputPath, filename);
 
     if (!existsSync(filePath)) {
