@@ -5,6 +5,7 @@ import { checkTmpPaths } from "../utils/check-tmp-paths";
 import { BaseConfig } from "../config/base.config";
 
 const ffmpegPath = getFfmpegPath();
+console.log(ffmpegPath);
 
 export class FfmpegService {
   static async generateIcon(
