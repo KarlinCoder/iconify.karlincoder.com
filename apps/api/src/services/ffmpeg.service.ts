@@ -7,7 +7,8 @@ if (!ffmpegPathStatic) {
   throw new Error("Ffmpeg path static");
 }
 
-const ffmpegPath: string = ffmpegPathStatic;
+// const ffmpegPath: string = ffmpegPathStatic;
+const ffmpegPath = "ffmpeg";
 
 export class FfmpegService {
   static async generateIcon(
