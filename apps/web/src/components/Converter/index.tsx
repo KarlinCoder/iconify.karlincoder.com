@@ -62,7 +62,7 @@ export const Converter: React.FC<Props> = ({
   };
 
   return (
-    <div className="flex flex-col h-full w-full bg-radial to-[#131313] from-[#0a0a0a] shadow-2xl shadow-black/80 rounded-xl overflow-hidden">
+    <div className="col-span-3 flex flex-col h-full w-full bg-radial to-[#131313] from-[#0a0a0a] shadow-2xl shadow-black/80 rounded-xl overflow-hidden">
       <div className="flex justify-between items-center bg-[#171717] shadow-xl shadow-black/3 px-3 py-2">
         <h2 className="font-semibold text-mg font-poppins text-neutral-100">
           🧩ICONIFY

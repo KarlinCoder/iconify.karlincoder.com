@@ -14,7 +14,7 @@ export const postApiImage = async (
   formData.append("format", format);
 
   const { data } = await axios.post<IConversionResponse>(
-    `${API_URL}/v1/converts`,
+    `${API_URL}/v1/convert`,
     formData
   );
 

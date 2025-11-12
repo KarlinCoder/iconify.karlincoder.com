@@ -39,7 +39,7 @@ function App() {
   return (
     <main className="relative px-3 flex flex-row justify-center items-center gap-3 bg-linear-180 from-neutral-900 to-neutral-950 h-dvh">
       {apiConfig && (
-        <div className="flex justify-center items-center max-w-[900px] w-full gap-3">
+        <div className="grid grid-cols-5 max-w-[1000px] min-[990px]:max-h-[600px]  h-full  w-full gap-3">
           <Converter
             onError={handleAppError}
             onShowAuthorModal={handleShowAuthorModal}
