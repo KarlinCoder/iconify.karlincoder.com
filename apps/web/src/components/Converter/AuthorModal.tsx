@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import { motion } from "motion/react";
 import { CgClose } from "react-icons/cg";
-import { FaCopyright, FaFacebook, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaCopyright } from "react-icons/fa6";
+import { SOCIAL_MEDIAS } from "../../config/constants";
 
 interface Props {
   onClose: () => void;
@@ -61,28 +62,27 @@ export const AuthorModal: FC<Props> = ({ onClose }) => {
             <FaCopyright /> Copyright {new Date().getFullYear()} - by
             KarlinCoder
           </p>
-          <div className="flex justify-end items-center gap-3">
-            <a
-              target="_blank"
-              href="https://facebook.com/karlincoder"
-              className="inline-block scale-120 text-neutral-300 hover:text-neutral-200 active:text-neutral-300"
-            >
-              <FaFacebook />
-            </a>
-            <a
-              target="_blank"
-              href="https://x.com/karlincoder"
-              className="inline-block scale-120 text-neutral-300 hover:text-neutral-200 active:text-neutral-300"
-            >
-              <FaXTwitter />
-            </a>
-            <a
-              target="_blank"
-              href="https://github.com/karlincoder"
-              className="inline-block scale-120 text-neutral-300 hover:text-neutral-200 active:text-neutral-300"
-            >
-              <FaGithub />
-            </a>
+          <div className="flex justify-end items-center">
+            {SOCIAL_MEDIAS.map((item, index) => {
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.link}
+                  target="_blank"
+                  initial={{ y: 12, opacity: 0 }}
+                  animate={{
+                    y: 0,
+                    opacity: 100,
+                    transition: { delay: (index + 1) * 0.1 },
+                  }}
+                  whileHover={{ scale: 1.3 }}
+                  whileTap={{ scale: 1 }}
+                  className="inline-block p-1 text-neutral-300 hover:text-neutral-100 active:text-neutral-300"
+                >
+                  <item.icon size={20} />
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </motion.div>

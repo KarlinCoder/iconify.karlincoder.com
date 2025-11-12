@@ -21,7 +21,6 @@ export class ConverterController {
       const result = validateConverterSchema(req.body);
 
       if (result.error) {
-        console.log(result.error.message);
         return res.json({
           status_code: 400,
           error: JSON.parse(result.error.message),

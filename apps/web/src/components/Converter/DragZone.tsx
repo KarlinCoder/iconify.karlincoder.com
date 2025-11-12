@@ -10,11 +10,8 @@ export const DragZone: React.FC<Props> = ({
   acceptableFormats,
 }) => {
   const mappedFormats = acceptableFormats.map((item) => `.${item}`);
-  console.log(mappedFormats);
 
   const formatsToString = mappedFormats.toString();
-
-  console.log(formatsToString);
 
   return (
     <div className="relative bg-[#171717] h-full w-full rounded-xl overflow-hidden shadow-2xl shadow-black/2 p-2">
