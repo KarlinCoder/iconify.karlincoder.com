@@ -16,7 +16,7 @@ export const AppLoadingLayer: FC<Props> = ({ onConfigLoaded }) => {
   return (
     <motion.div
       exit={{ opacity: 0 }}
-      className="absolute inset-0 flex justify-center items-center bg-linear-60 from-[#000] to-neutral-[#222]"
+      className="absolute inset-0 flex justify-center items-center bg-linear-60 from-black to-neutral-[#222]"
     >
       <motion.div className="flex items-center justify-center gap-2">
         <LuLoaderCircle size={50} className="animate-spin text-blue-600" />
