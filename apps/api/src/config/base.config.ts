@@ -4,7 +4,7 @@ export const BaseConfig = {
   server: {
     port: 3000,
   },
-  availableFormats: ["jpeg", "jpg", "png", "ico"],
+  availableFormats: ["jpeg", "jpg", "png", "ico", "webp", "bmp", "avif"],
   availableConvertibleFormats: [
     "image/png",
     "image/jpeg",

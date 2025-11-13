@@ -15,12 +15,15 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoaded = () => {
+    console.log({ imageLoaded });
     setImageLoaded(true);
   };
 
   const handleDownload = async () => {
+    console.log("✔ Loaded");
     setisLoading(true);
     const data = getApiImageDownload(convertedIcon.filename);
+
     setisLoading(false);
     return data;
   };
@@ -32,16 +35,19 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       key={convertedIcon.filename}
       className="flex items-center gap-2 bg-[#171717] grow p-2 rounded-md shadow-lg shadow-black/4 transition-transform duration-100 hover:scale-102"
     >
-      {imageLoaded ? (
+      <div className="aspect-square rounded-md size-[60px] overflow-hidden">
         <img
           src={convertedIcon.file_url}
           alt="converted icon"
           onLoad={handleImageLoaded}
-          className="aspect-square rounded-md size-[60px] bg-black"
+          className={`${imageLoaded ? "block" : "hidden"} w-full h-full`}
+          onError={() => {
+            console.log("Converted image preview can'b be loaded.");
+          }}
         />
-      ) : (
-        <ImagePlaceHolder />
-      )}
+
+        {!imageLoaded && <ImagePlaceHolder />}
+      </div>
 
       <div className="grow h-full flex flex-col justify-center">
         <h2 className="font-inter-tight text-sm font-semibold text-neutral-50">
