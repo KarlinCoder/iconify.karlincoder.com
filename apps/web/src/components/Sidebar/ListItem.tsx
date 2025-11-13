@@ -4,6 +4,7 @@ import { getApiImageDownload } from "../../utils/get-api-mage-download";
 import { TbCloudDownload } from "react-icons/tb";
 import { useState } from "react";
 import { RiLoader4Line } from "react-icons/ri";
+import { ImagePlaceHolder } from "./ImagePlaceholder";
 
 interface Props {
   convertedIcon: IConversionResponse;
@@ -11,6 +12,11 @@ interface Props {
 
 export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
   const [isLoading, setisLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoaded = () => {
+    setImageLoaded(true);
+  };
 
   const handleDownload = async () => {
     setisLoading(true);
@@ -26,11 +32,16 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       key={convertedIcon.filename}
       className="flex items-center gap-2 bg-[#171717] grow p-2 rounded-md shadow-lg shadow-black/4 transition-transform duration-100 hover:scale-102"
     >
-      <img
-        src={convertedIcon.file_url}
-        alt="converted icon"
-        className="aspect-square rounded-md max-w-[60px] bg-black"
-      />
+      {imageLoaded ? (
+        <img
+          src={convertedIcon.file_url}
+          alt="converted icon"
+          onLoad={handleImageLoaded}
+          className="aspect-square rounded-md size-[60px] bg-black"
+        />
+      ) : (
+        <ImagePlaceHolder />
+      )}
 
       <div className="grow h-full flex flex-col justify-center">
         <h2 className="font-inter-tight text-sm font-semibold text-neutral-50">

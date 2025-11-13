@@ -25,7 +25,15 @@ export const upload = multer({
       file.mimetype === "image/png" ||
       file.mimetype === "image/jpg" ||
       file.mimetype === "image/jpeg" ||
-      file.mimetype === "image/ico"
+      file.mimetype === "image/webp" ||
+      file.mimetype === "image/gif" ||
+      file.mimetype === "image/bmp" ||
+      file.mimetype === "image/tiff" ||
+      file.mimetype === "image/avif" ||
+      file.mimetype === "image/x-icon" ||
+      file.mimetype === "image/vnd.microsoft.icon" ||
+      file.mimetype === "image/avif" ||
+      file.mimetype === "image/svg+xml"
     ) {
       cb(null, true);
     } else {
