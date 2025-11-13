@@ -7,7 +7,7 @@ import { SOCIAL_MEDIAS } from "../../config/constants";
 interface Props {
   onClose: () => void;
 }
-
+//
 export const AuthorModal: FC<Props> = ({ onClose }) => {
   return (
     <motion.div
