@@ -23,6 +23,7 @@ export class ConverterController {
       if (result.error) {
         return res.json({
           status_code: 400,
+          error_code: "BODY_VALIDATION_ERROR",
           error: JSON.parse(result.error.message),
         });
       }
@@ -108,64 +109,5 @@ export class ConverterController {
     req.on("close", () => {
       clearInterval(pendingInterval);
     });
-  }
-
-  static docs(req: Request, res: Response) {
-    const html = `
-      <!DOCTYPE html>
-      <html lang="es">
-      <head>
-        <meta charset="UTF-8">
-        <title>API Documentation</title>
-        <style>
-          body { font-family: Arial, sans-serif; margin: 40px; }
-          h1, h2 { color: #333; }
-          code { background: #eee; padding: 2px 4px; border-radius: 4px; }
-          pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
-        </style>
-      </head>
-      <body>
-        <h1>Documentación de la API</h1>
-
-        <h2>Endpoints</h2>
-
-        <h3>Subir y convertir imagen a .ico</h3>
-        <ul>
-          <li><strong>Ruta:</strong> <code>/convert</code></li>
-          <li><strong>Método:</strong> <code>POST</code></li>
-          <li><strong>Body:</strong> Formulario con campo <code>image</code> (archivo).</li>
-          <li><strong>Respuesta:</strong> <code>{ message, outputFile }</code></li>
-        </ul>
-
-        <h3>Descargar archivo generado</h3>
-        <ul>
-          <li><strong>Ruta:</strong> <code>/download/:filename</code></li>
-          <li><strong>Método:</strong> <code>GET</code></li>
-          <li><strong>Parámetro:</strong> <code>filename</code> (nombre del archivo generado).</li>
-          <li><strong>Respuesta:</strong> Descarga del archivo .ico</li>
-        </ul>
-
-        <h3>Ver estado de la cola</h3>
-        <ul>
-          <li><strong>Ruta:</strong> <code>/status</code></li>
-          <li><strong>Método:</strong> <code>GET</code></li>
-          <li><strong>Respuesta:</strong> <code>{ status: "live" }</code></li>
-        </ul>
-
-        <h3>Ver documentación (esta página)</h3>
-        <ul>
-          <li><strong>Ruta:</strong> <code>/docs</code></li>
-          <li><strong>Método:</strong> <code>GET</code></li>
-        </ul>
-
-        <h2>Ejemplo de uso</h2>
-        <pre>
-curl -X POST -F "image=@imagen.jpg" http://localhost:3000/convert
-        </pre>
-      </body>
-      </html>
-    `;
-
-    res.send(html);
   }
 }

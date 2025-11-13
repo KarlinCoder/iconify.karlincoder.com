@@ -2,8 +2,8 @@ import { existsSync, mkdirSync } from "fs";
 import multer from "multer";
 import { resolve } from "path";
 
-const uploadedDir = resolve("tmp/input");
-const convertedDir = resolve("tmp/output");
+const uploadedDir = resolve("../tmp/input");
+const convertedDir = resolve("../tmp/output");
 
 if (!existsSync(uploadedDir)) mkdirSync(uploadedDir, { recursive: true });
 if (!existsSync(convertedDir)) mkdirSync(convertedDir, { recursive: true });

@@ -13,6 +13,8 @@ export const postApiImage = async (
   formData.append("resolution", resolution);
   formData.append("format", format);
 
+  console.log(file, resolution, format);
+
   const { data } = await axios.post<IConversionResponse>(
     `${API_URL}/v1/convert`,
     formData

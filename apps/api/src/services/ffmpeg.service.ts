@@ -7,17 +7,18 @@ import { checkTmpPaths } from "../utils/check-tmp-paths";
 const ffmpegPath = getFfmpegPath();
 console.log(ffmpegPath);
 
-checkTmpPaths();
-
 export class FfmpegService {
   static async generateIcon(
     imgUrl: string,
     format: string,
     resolution: string
   ) {
+    checkTmpPaths();
     const outputFile = path.resolve(
       path.join(BaseConfig.tmpFiles.outputFiles, `${Date.now()}_icon.${format}`)
     );
+
+    console.log({ outputFile });
 
     return new Promise<string>((resolve, reject) => {
       const imageProcess = spawn(ffmpegPath, [
