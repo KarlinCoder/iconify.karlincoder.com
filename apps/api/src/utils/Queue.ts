@@ -12,7 +12,7 @@ export class Queue {
     });
   }
 
-  public add(task: () => Promise<string>) {
+  public add<T>(task: () => Promise<T>): T {
     return this.queue.add(task);
   }
 
