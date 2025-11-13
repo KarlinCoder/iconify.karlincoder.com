@@ -2,8 +2,12 @@ import { spawn } from "child_process";
 import path from "path";
 import { BaseConfig } from "../config/base.config";
 import { getFfmpegPath } from "../utils/get-ffmpeg-path";
+import { checkTmpPaths } from "../utils/check-tmp-paths";
 
 const ffmpegPath = getFfmpegPath();
+console.log(ffmpegPath);
+
+checkTmpPaths();
 
 export class FfmpegService {
   static async generateIcon(
@@ -30,7 +34,7 @@ export class FfmpegService {
 
       imageProcess.on("close", (code) => {
         if (code !== 0) {
-          reject(new Error(`Proceso de conversión fallido con código ${code}`));
+          reject(new Error(`No se pudo cerrar el archivo ${code}`));
         } else {
           console.log(`Icono generado en: ${outputFile}`);
           resolve(outputFile);

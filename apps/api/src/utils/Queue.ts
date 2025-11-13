@@ -12,7 +12,7 @@ export class Queue {
     });
   }
 
-  public add<T>(task: () => Promise<T>): T {
+  public async add<T>(task: () => Promise<T>) {
     return this.queue.add(task);
   }
 

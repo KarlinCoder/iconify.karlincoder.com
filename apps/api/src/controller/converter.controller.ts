@@ -57,21 +57,15 @@ export class ConverterController {
       }
 
       try {
-        const result = taskManager.add<string>(() =>
+        const result = await taskManager.add<string>(() =>
           FfmpegService.generateIcon(imageFile.path, format, resolution)
         );
 
         const filename = path.basename(result);
 
-        const protocol = req.protocol; // "https" en Render
-        const host = req.get("host"); // "iconify-karlincoder-com.onrender.com"
-        const fileUrl = `${protocol}://${host}/download/${encodeURIComponent(
-          filename
-        )}`;
-
         res.status(200).json({
           status_code: 200,
-          file_url: fileUrl,
+          file_url: result,
           filename,
           format,
           resolution,
