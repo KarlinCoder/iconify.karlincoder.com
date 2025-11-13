@@ -20,5 +20,8 @@
   "packageManager": "pnpm@10.22.0",
   "devDependencies": {
     "turbo": "^2.6.0"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
   }
 }

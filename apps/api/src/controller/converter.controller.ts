@@ -42,20 +42,6 @@ export class ConverterController {
         });
       }
 
-      if (!format) {
-        return res.json({
-          status_code: 400,
-          error: "Format not recibed",
-        });
-      }
-
-      if (!resolution) {
-        return res.json({
-          status_code: 400,
-          error: "Resolution not recibed",
-        });
-      }
-
       try {
         const result = await taskManager.add<string>(() =>
           FfmpegService.generateIcon(imageFile.path, format, resolution)
@@ -63,9 +49,15 @@ export class ConverterController {
 
         const filename = path.basename(result);
 
+        const fileUrl = `${req.protocol}://${req.get(
+          "host"
+        )}/v1/download/${filename}`;
+
+        console.log(fileUrl);
+
         res.status(200).json({
           status_code: 200,
-          file_url: result,
+          file_url: fileUrl,
           filename,
           format,
           resolution,
@@ -101,6 +93,8 @@ export class ConverterController {
 
     res.sendFile(filePath);
   }
+
+  static async history(req: Request, res: Response) {}
 
   static async pendingImages(req: Request, res: Response) {
     res.setHeader("Content-Type", "text/event-stream");
