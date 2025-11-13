@@ -79,7 +79,7 @@ export const Converter: React.FC<Props> = ({
           <PreviewImage file={selectedImage!} />
 
           <DragZone
-            acceptableFormats={apiConfiguration.available_formats}
+            acceptableFormats={apiConfiguration.available_convertible_formats}
             onImageSelected={handleSelectedImage}
           />
         </div>

@@ -9,9 +9,8 @@ export const DragZone: React.FC<Props> = ({
   onImageSelected,
   acceptableFormats,
 }) => {
-  const mappedFormats = acceptableFormats.map((item) => `.${item}`);
-
-  const formatsToString = mappedFormats.toString();
+  const formatsToString = acceptableFormats.join(",");
+  console.log(formatsToString);
 
   return (
     <div className="relative bg-[#171717] h-full w-full rounded-xl overflow-hidden shadow-2xl shadow-black/2 p-2">

@@ -9,4 +9,5 @@ export interface IConversionResponse {
 export interface IConfigurationResponse {
   available_resolutions: string[];
   available_formats: string[];
+  available_convertible_formats: string[];
 }

@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync } from "fs";
 import multer from "multer";
 import { resolve } from "path";
+import { BaseConfig } from "../config/base.config";
 
 const uploadedDir = resolve("../tmp/input");
 const convertedDir = resolve("../tmp/output");
@@ -21,20 +22,7 @@ export const upload = multer({
   },
 
   fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/jpeg" ||
-      file.mimetype === "image/webp" ||
-      file.mimetype === "image/gif" ||
-      file.mimetype === "image/bmp" ||
-      file.mimetype === "image/tiff" ||
-      file.mimetype === "image/avif" ||
-      file.mimetype === "image/x-icon" ||
-      file.mimetype === "image/vnd.microsoft.icon" ||
-      file.mimetype === "image/avif" ||
-      file.mimetype === "image/svg+xml"
-    ) {
+    if (BaseConfig.availableConvertibleFormats.includes(file.mimetype)) {
       cb(null, true);
     } else {
       return cb(new Error("Invalid mime type."));

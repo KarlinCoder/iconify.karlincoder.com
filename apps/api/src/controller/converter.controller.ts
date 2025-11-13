@@ -73,6 +73,7 @@ export class ConverterController {
     const documentedHelp = {
       available_formats: BaseConfig.availableFormats,
       available_resolutions: BaseConfig.availableResolutions,
+      available_convertible_formats: BaseConfig.availableConvertibleFormats,
     };
 
     res.json(documentedHelp);
