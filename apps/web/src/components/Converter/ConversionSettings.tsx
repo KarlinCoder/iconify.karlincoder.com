@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Dropdown } from "./Dropdown";
+import { FaFileImage, FaRegWindowMaximize } from "react-icons/fa6";
 
 export type TModalOpened = "format" | "resolution" | null;
 
@@ -32,6 +33,7 @@ export const ConversionSettings: React.FC<Props> = ({
         <p className="font-poppins">ICON RESOLUTION: </p>
 
         <Dropdown
+          ItemIcon={FaRegWindowMaximize}
           modalName="resolution"
           selectedModalName={modalOpened}
           onModalOpen={handleModalOpened}
@@ -45,6 +47,7 @@ export const ConversionSettings: React.FC<Props> = ({
         <p className="font-poppins">IMAGE FORMAT: </p>
 
         <Dropdown
+          ItemIcon={FaFileImage}
           modalName="format"
           onModalOpen={handleModalOpened}
           selectedModalName={modalOpened}

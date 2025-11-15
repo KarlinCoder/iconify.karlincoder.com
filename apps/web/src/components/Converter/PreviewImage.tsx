@@ -26,7 +26,7 @@ export const PreviewImage: React.FC<Props> = ({ file }) => {
   }, [file]);
 
   return (
-    <div className="flex justify-center items-center overflow-hidden bg-[#171717] self-center rounded-md ">
+    <div className="flex justify-center items-center overflow-hidden self-center rounded-md ">
       <AnimatePresence>
         {file ? (
           <motion.img
@@ -35,7 +35,7 @@ export const PreviewImage: React.FC<Props> = ({ file }) => {
             exit={{ y: 10, opacity: 0 }}
             ref={imgRef}
             alt="selected image"
-            className="w-full object-center object-cover rounded-md aspect-square"
+            className="w-full object-center object-contain rounded-md aspect-square bg-[#171717]"
           />
         ) : (
           <div className="aspect-square w-full italic flex justify-center items-center text-xs text-neutral-600">

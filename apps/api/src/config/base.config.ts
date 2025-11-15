@@ -20,7 +20,7 @@ export const BaseConfig = {
   ],
   availableResolutions: ["32x32", "64x64", "128x128", "256x256"],
   tmpFiles: {
-    inputFiles: "../../tmp/input",
-    outputFiles: "../../tmp/output",
+    inputFiles: "tmp/input",
+    outputFiles: "tmp/output",
   },
 };

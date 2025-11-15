@@ -15,6 +15,10 @@ function App() {
   const [showAuthorModal, setShowAuthorModal] = useState(false);
   const [appError, setAppError] = useState<Error | null>(null);
 
+  const handleCleanConvertedIcons = () => {
+    setConvertedIcons([]);
+  };
+
   const handleAppError = (error: Error) => {
     setAppError(error);
   };
@@ -47,7 +51,10 @@ function App() {
             onIconConverted={handleAddConvertedIcon}
           />
 
-          <Sidebar convertedIcons={convertedIcons} />
+          <Sidebar
+            onCleanConvertedIcons={handleCleanConvertedIcons}
+            convertedIcons={convertedIcons}
+          />
         </div>
       )}
 

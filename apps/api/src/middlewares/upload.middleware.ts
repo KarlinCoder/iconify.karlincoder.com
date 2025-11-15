@@ -1,10 +1,10 @@
 import { existsSync, mkdirSync } from "fs";
 import multer from "multer";
-import { resolve } from "path";
 import { BaseConfig } from "../config/base.config";
 
-const uploadedDir = resolve("../tmp/input");
-const convertedDir = resolve("../tmp/output");
+const uploadedDir = BaseConfig.tmpFiles.inputFiles;
+const convertedDir = BaseConfig.tmpFiles.outputFiles;
+console.log(uploadedDir, convertedDir);
 
 if (!existsSync(uploadedDir)) mkdirSync(uploadedDir, { recursive: true });
 if (!existsSync(convertedDir)) mkdirSync(convertedDir, { recursive: true });

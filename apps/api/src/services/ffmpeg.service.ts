@@ -1,5 +1,6 @@
+import path from "node:path";
+import fsP from "node:fs/promises";
 import { spawn } from "child_process";
-import path from "path";
 import { BaseConfig } from "../config/base.config";
 import { getFfmpegPath } from "../utils/get-ffmpeg-path";
 import { checkTmpPaths } from "../utils/check-tmp-paths";
@@ -14,11 +15,13 @@ export class FfmpegService {
     resolution: string
   ) {
     checkTmpPaths();
-    const outputFile = path.resolve(
-      path.join(BaseConfig.tmpFiles.outputFiles, `${Date.now()}_icon.${format}`)
-    );
 
-    console.log({ outputFile });
+    const outputFile = path.resolve(
+      path.join(
+        BaseConfig.tmpFiles.outputFiles,
+        `${Date.now()}_iconify.${format}`
+      )
+    );
 
     return new Promise<string>((resolve, reject) => {
       const imageProcess = spawn(ffmpegPath, [
@@ -33,11 +36,11 @@ export class FfmpegService {
         reject(new Error("Hubo un error"));
       });
 
-      imageProcess.on("close", (code) => {
+      imageProcess.on("close", async (code) => {
         if (code !== 0) {
           reject(new Error(`No se pudo cerrar el archivo ${code}`));
         } else {
-          console.log(`Icono generado en: ${outputFile}`);
+          await fsP.rm(imgUrl);
           resolve(outputFile);
         }
       });

@@ -9,7 +9,7 @@ export const getApiConfiguration =
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve(0);
-        }, 3000)
+        }, 1000)
       );
     }
     return data;

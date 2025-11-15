@@ -1,8 +1,9 @@
+import path from "node:path";
+import fs from "node:fs";
 import { Request, Response } from "express";
 import { Queue } from "../utils/Queue";
 import { FfmpegService } from "../services/ffmpeg.service";
 import { existsSync } from "fs";
-import path from "path";
 import { upload } from "../middlewares/upload.middleware";
 import { BaseConfig } from "../config/base.config";
 import { validateConverterSchema } from "../schemas/converter.schema";
@@ -53,12 +54,14 @@ export class ConverterController {
         const fileUrl = `${req.protocol}://${req.get(
           "host"
         )}/v1/download/${filename}`;
+        console.log(result);
 
-        console.log(fileUrl);
+        const { size: fileSize } = fs.statSync(result);
 
         res.status(200).json({
           status_code: 200,
           file_url: fileUrl,
+          file_size: fileSize,
           filename,
           format,
           resolution,

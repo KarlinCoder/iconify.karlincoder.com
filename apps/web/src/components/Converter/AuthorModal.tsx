@@ -1,14 +1,23 @@
-import type { FC } from "react";
+import { useEffect, type FC } from "react";
 import { motion } from "motion/react";
 import { CgClose } from "react-icons/cg";
 import { FaCopyright } from "react-icons/fa6";
 import { SOCIAL_MEDIAS } from "../../config/constants";
+import logoImage from "../../assets/images/logo_transparent.png";
 
 interface Props {
   onClose: () => void;
 }
-//
+
 export const AuthorModal: FC<Props> = ({ onClose }) => {
+  useEffect(() => {
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape") return onClose();
+    });
+
+    return () => {};
+  }, [onClose]);
+
   return (
     <motion.div
       onClick={onClose}
@@ -26,13 +35,13 @@ export const AuthorModal: FC<Props> = ({ onClose }) => {
       >
         <button
           onClick={onClose}
-          className=" absolute top-1 right-1 p-1.5 rounded-full text-red-500 cursor-pointer hover:bg-red-500/20 active:bg-transparent transition-colors"
+          className="absolute top-1 right-1 p-1.5 rounded-full text-red-500 cursor-pointer hover:bg-red-500/20 active:bg-transparent transition-colors"
         >
           <CgClose className="scale-140" />
         </button>
 
-        <div className="flex items-center px-3">
-          <div className="text-4xl">🧩</div>
+        <div className="flex items-center gap-2 px-3">
+          <img src={logoImage} alt="iconify logo" className="size-10" />
           <div>
             <h2 className="text-2xl text-neutral-200 font-poppins font-semibold">
               ICONIFY
@@ -41,25 +50,31 @@ export const AuthorModal: FC<Props> = ({ onClose }) => {
               </span>
             </h2>
             <p className="text-sm leading-3 text-neutral-500 font-poppins">
-              Convert your icons
+              Convert & compress icons in seconds
             </p>
           </div>
         </div>
 
-        <div className="bg-neutral-700 h-[1px] w-full"></div>
+        <div className="bg-neutral-700 h-px w-full"></div>
 
         <p className="text-neutral-400 font-poppins text-sm px-3 text-pretty">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-          voluptas delectus, esse ea, hic nulla maxime tempore ab, beatae
-          dolores perferendis molestiae. Hic nihil, recusandae incidunt possimus
-          ullam sunt laborum?
+          Iconify is a fast, no-frills converter for icons. It supports common
+          formats like <strong>.ico</strong>, <strong>.png</strong>,{" "}
+          <strong>.svg</strong> and more, and focuses on clean output with
+          minimal file size—no quality loss, no unnecessary steps.
         </p>
 
-        <div className="bg-neutral-700 h-[1px] w-full"></div>
+        <p className="text-neutral-400 font-poppins text-sm px-3 text-pretty">
+          It was built to be simple, reliable, and private: your files never
+          leave your browser. Created by KarlinCoder—you can find my links just
+          below.
+        </p>
+
+        <div className="bg-neutral-700 h-px w-full"></div>
 
         <div className="flex justify-between items-center w-full px-3">
           <p className="text-xs text-neutral-600 flex items-center gap-1">
-            <FaCopyright /> Copyright {new Date().getFullYear()} - by
+            <FaCopyright /> Copyright {new Date().getFullYear()} – by
             KarlinCoder
           </p>
           <div className="flex justify-end items-center">
@@ -69,6 +84,7 @@ export const AuthorModal: FC<Props> = ({ onClose }) => {
                   key={item.name}
                   href={item.link}
                   target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ y: 12, opacity: 0 }}
                   animate={{
                     y: 0,

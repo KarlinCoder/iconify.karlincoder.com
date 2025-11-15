@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 import type { IConversionResponse } from "../../types/api";
-import { getApiImageDownload } from "../../utils/get-api-mage-download";
+import { getApiImageDownload } from "../../services/get-api-mage-download";
 import { TbCloudDownload } from "react-icons/tb";
 import { useState } from "react";
 import { RiLoader4Line } from "react-icons/ri";
 import { ImagePlaceHolder } from "./ImagePlaceholder";
+import { FaFile, FaRegImage } from "react-icons/fa6";
+import { formatFileSize } from "../../utils/format-file-size";
 
 interface Props {
   convertedIcon: IConversionResponse;
@@ -15,12 +17,10 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoaded = () => {
-    console.log({ imageLoaded });
     setImageLoaded(true);
   };
 
   const handleDownload = async () => {
-    console.log("✔ Loaded");
     setisLoading(true);
     const data = getApiImageDownload(convertedIcon.filename);
 
@@ -40,9 +40,11 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
           src={convertedIcon.file_url}
           alt="converted icon"
           onLoad={handleImageLoaded}
-          className={`${imageLoaded ? "block" : "hidden"} w-full h-full`}
+          className={`${
+            imageLoaded ? "block" : "hidden"
+          } w-full h-full object-cover`}
           onError={() => {
-            console.log("Converted image preview can'b be loaded.");
+            alert("Converted image preview can'b be loaded.");
           }}
         />
 
@@ -50,12 +52,18 @@ export const ListItem: React.FC<Props> = ({ convertedIcon }) => {
       </div>
 
       <div className="grow h-full flex flex-col justify-center">
-        <h2 className="font-inter-tight text-sm font-semibold text-neutral-50">
+        <h2 className="font-inter-tight text-sm text-neutral-50">
           {convertedIcon.filename}
         </h2>
-        <div className="flex items-center gap-3 font-inter-tight text-[0.8rem] text-neutral-300">
-          <p>{convertedIcon.resolution}</p>
-          <p>.{convertedIcon.format}</p>
+        <div className="flex items-center gap-3 font-inter-tight text-[0.7rem] text-neutral-400">
+          <div className="flex items-center gap-1">
+            <FaRegImage />
+            <p>{convertedIcon.resolution}</p>
+          </div>
+          <div className="flex items-center gap-1">
+            <FaFile />
+            <p>{formatFileSize(convertedIcon.file_size)}</p>
+          </div>
         </div>
       </div>
 

@@ -13,7 +13,7 @@ export const DragZone: React.FC<Props> = ({
 
   return (
     <div className="relative bg-[#171717] h-full w-full rounded-xl overflow-hidden shadow-2xl shadow-black/2 p-2">
-      <div className="relative flex flex-col justify-center items-center w-full h-full border-dashed border- border-2 border-white/40 rounded-xl py-7">
+      <div className="relative flex flex-col justify-center items-center w-full h-full border-dashed border- border-3 border-white/9 rounded-xl py-7">
         <div className="flex flex-col justify-center items-center gap-1 text-center">
           <FiDownload size={90} className="text-white opacity-20" />
           <div>

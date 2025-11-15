@@ -8,7 +8,8 @@ import type {
   IConversionResponse,
 } from "../../types/api";
 import { PreviewImage } from "./PreviewImage";
-import { postApiImage } from "../../utils/post-api-image";
+import { postApiImage } from "../../services/post-api-image";
+import logoImg from "../../assets/images/logo_transparent.png";
 
 interface Props {
   apiConfiguration: IConfigurationResponse;
@@ -64,9 +65,17 @@ export const Converter: React.FC<Props> = ({
   return (
     <div className="col-span-3 flex flex-col h-full w-full bg-radial to-[#131313] from-[#0a0a0a] shadow-2xl shadow-black/80 rounded-xl overflow-hidden">
       <div className="flex justify-between items-center bg-[#171717] shadow-xl shadow-black/3 px-3 py-2">
-        <h2 className="font-semibold text-mg font-poppins text-neutral-100">
-          🧩ICONIFY
-        </h2>
+        <div className="flex items-center gap-1">
+          <img src={logoImg} alt="iconify logo" className="size-6 drag" />
+
+          <h1 className="font-semibold text-mg font-poppins text-neutral-100">
+            ICONIFY{" "}
+            <span className="text-[0.5rem] text-neutral-500">
+              by KarlinCoder
+            </span>
+          </h1>
+        </div>
+
         <button
           onClick={onShowAuthorModal}
           className="hover:scale-120 active:scale-100 transition-transform cursor-pointer"
