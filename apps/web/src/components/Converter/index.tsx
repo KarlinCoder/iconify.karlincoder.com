@@ -69,10 +69,7 @@ export const Converter: React.FC<Props> = ({
           <img src={logoImg} alt="iconify logo" className="size-6 drag" />
 
           <h1 className="font-semibold text-mg font-poppins text-neutral-100">
-            ICONIFY{" "}
-            <span className="text-[0.5rem] text-neutral-500">
-              by KarlinCoder
-            </span>
+            ICONIFY
           </h1>
         </div>
 
@@ -102,12 +99,12 @@ export const Converter: React.FC<Props> = ({
           selectedResolution={selectedResolution}
         />
 
-        <div className="flex max-[520px]:flex-col flow-row justify-start items-center gap-2">
+        <div className="flex max-[520px]:flex-col flow-row justify-center items-center gap-2">
           <ConvertButton
             isLoading={isConverting}
             onClick={handleConvertClick}
           />
-          <p className="text-xs italic text-white/50 font-inter-tight">
+          <p className="text-xs italic text-white/50 font-inter-tight grow">
             La duración del proceso puede variar dependiendo de la cantidad de
             imagenes en cola en este momento.
           </p>

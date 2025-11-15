@@ -10,7 +10,7 @@ export const ConvertButton: React.FC<Props> = ({ isLoading, onClick }) => {
     <button
       onClick={onClick}
       disabled={isLoading}
-      className={`flex min-[520px]:max-w-[200px] w-full justify-center items-center gap-2 rounded-full text-sm px-12 py-2.5 font-inter-tight text-white/90 bg-linear-0 bg-blue-600 mx-auto font-semibold hover:opacity-90 active:opacity-100 transition-colors  disabled:bg-neutral-500 ${
+      className={`grow flex min-[520px]:max-w-[200px] w-full justify-center items-center gap-2 rounded-full text-sm px-12 py-2.5 font-inter-tight text-white/90 bg-linear-0 bg-blue-600 mx-auto font-semibold hover:opacity-90 active:opacity-100 transition-colors  disabled:bg-neutral-500 ${
         isLoading ? "cursor-not-allowed" : "cursor-pointer"
       }`}
     >

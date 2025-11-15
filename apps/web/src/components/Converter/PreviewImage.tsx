@@ -26,7 +26,7 @@ export const PreviewImage: React.FC<Props> = ({ file }) => {
   }, [file]);
 
   return (
-    <div className="flex justify-center items-center overflow-hidden self-center rounded-md ">
+    <div className="flex justify-center items-center overflow-hidden self-center rounded-md bg-[#171717]">
       <AnimatePresence>
         {file ? (
           <motion.img

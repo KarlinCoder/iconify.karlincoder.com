@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { ListItem } from "./ListItem";
 import { MdDelete } from "react-icons/md";
 import type { IConversionResponse } from "../../types/api";
+import { FaListCheck } from "react-icons/fa6";
 
 interface Props {
   convertedIcons: IConversionResponse[];
@@ -41,7 +42,7 @@ export const Sidebar: React.FC<Props> = ({
 
       <main
         ref={listRef}
-        className="relative grow flex flex-col gap-7 items-center justify-start px-2 overflow-y-scroll h-full"
+        className="relative grow flex flex-col gap-7 items-center justify-start px-2 overflow-y-scroll scroll-smooth h-full"
       >
         <ul className="w-full p-2 py-4 flex flex-col gap-2">
           {convertedIcons.map((item) => (
@@ -50,9 +51,7 @@ export const Sidebar: React.FC<Props> = ({
         </ul>
 
         {convertedIcons.length === 0 && (
-          <p className="absolute top-[50%] text-xs text-neutral-400 font-poppins italic">
-            (Start converting icons)
-          </p>
+          <FaListCheck className="absolute top-[50%] scale-400 text-neutral-600 font-poppins " />
         )}
       </main>
     </div>
