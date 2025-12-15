@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "turbo run dev",
+    "dev:all": "turbo run dev",
     "dev:api": "turbo run dev --filter=api",
     "dev:web": "turbo run dev --filter=web",
-    "build": "turbo run build",
+    "build:all": "turbo run build",
     "build:api": "turbo run build --filter=api",
     "build:web": "turbo run build --filter=web",
-    "start": "turbo run start",
+    "start:all": "turbo run start",
     "start:api": "turbo run start --filter=api",
     "start:web": "turbo run start --filter=web"
   },
