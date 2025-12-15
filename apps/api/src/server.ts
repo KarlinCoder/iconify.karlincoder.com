@@ -1,8 +1,7 @@
 import { app } from "./app";
 import { BaseConfig } from "./config/base.config";
 
-const PORT = process.env.PORT ?? BaseConfig.server.port;
-
-app.listen(PORT, () => {
-  console.log(`✅ server live http://localhost:${PORT}  `);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ API running on port ${PORT}`);
 });
